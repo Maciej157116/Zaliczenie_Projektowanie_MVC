@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Lista zadań</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .add-button {
+            display: inline-block;
+            padding: 8px 12px;
+            background: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .add-button:hover {
+            background: #218838;
+        }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            background: #fafafa;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+        .task-title {
+            font-size: 16px;
+        }
+        .task-title.completed {
+            text-decoration: line-through;
+            color: #777;
+        }
+        .task-actions a {
+            margin-left: 10px;
+            color: #0069d9;
+            text-decoration: none;
+        }
+        .task-actions a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista zadań</h1>
+    
+    <a class="add-button" href="{% url 'task_create' %}">Dodaj nowe zadanie</a>
+    
+    {% for task in tasks %}
+        <div class="task-item">
+            <span class="task-title {% if task.is_completed %}completed{% endif %}">
+                {{ task.title }}
+            </span>
+            <div class="task-actions">
+                <a href="{% url 'task_toggle_complete' task.id %}">Zmień status</a>
+                <a href="{% url 'task_edit' task.id %}">Edytuj</a>
+                <a href="{% url 'task_delete' task.id %}">Usuń</a>
+            </div>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
