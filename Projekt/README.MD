@@ -104,7 +104,7 @@ Gdybyśmy chcieli tworzyć endpointy JSON, moglibyśmy wykorzystać Django REST 
 
 ## 5.Struktura plików
 
-<code>```plaintext</code>
+```
 Projekt/
 ├── Projekt/
 │   ├── __init__.py
@@ -126,5 +126,5 @@ Projekt/
 │       └── task_edit.html
 ├── db.sqlite3
 └── manage.py
-<code>```</code>
+```
 
